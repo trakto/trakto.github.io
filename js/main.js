@@ -3,5 +3,6 @@ const sdkIntegration = new SDKIntegration(notification);
 const auth = new UserAuth(sdkIntegration);
 
 document.addEventListener('DOMContentLoaded', () => {
+
     auth.startAuthFlow();
 });

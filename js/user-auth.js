@@ -3,6 +3,7 @@ class UserAuth {
         this.url = 'https://api.trakto.io';
         this.sdkIntegration = sdkIntegration;
         this.userAccessToken = window.localStorage.getItem('access_token');        
+        this.initComponents();
     }
 
     initComponents() {
