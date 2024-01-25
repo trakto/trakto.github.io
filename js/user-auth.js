@@ -12,6 +12,7 @@ class UserAuth {
             this.logoutButton = document.getElementById('logoutButton');
             this.authModal = document.getElementById('authModal');
             this.submitAuth = document.getElementById('submitAuth');
+            this.closeAuth = document.getElementById('closeAuth');
     
             this.email = document.getElementById('email');
             this.password = document.getElementById('password');
@@ -19,9 +20,14 @@ class UserAuth {
             this.loginButton.addEventListener('click', this.showModal.bind(this));
             this.logoutButton.addEventListener('click', this.logout.bind(this));
             this.submitAuth.addEventListener('click', this.authenticate.bind(this));
-    
+            this.closeAuth.addEventListener('click', this.cancelAuth.bind(this));
             this.setAuthButtonStates();
         });
+    }
+
+    cancelAuth() {
+        const notification = new NotificationComponent();
+        notification.notifyError('😵 É necessário realizar login para utilizar o SDK');
     }
 
     setAuthButtonStates() {
