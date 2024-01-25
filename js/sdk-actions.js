@@ -1,6 +1,9 @@
 class SDKActions {
-    constructor(sdkInstance) {
+    constructor(sdkInstance, formatId, designId, templateId) {
         this.sdkInstance = sdkInstance;
+        this.formatId = formatId;
+        this.designId = designId;
+        this.templateId = templateId;
         this.initComponents();
     }
 
@@ -11,9 +14,6 @@ class SDKActions {
             height: 500,
             exportResolution: ['low'],
         };
-        this.templateId = null;
-        this.designId = null;
-        this.formatId = null;
     }
 
     initComponents() {
@@ -32,19 +32,11 @@ class SDKActions {
     }
 
     createUsingTemplate() {
-        if (!templateId) {
+        if (!this.templateId) {
             alert('Não há um template carregado ainda');
             return;
         }
-        this.sdkInstance.openFromTemplate(templateId, this.setResponse.bind(this));
-    }
-
-    createUsingTemplate() {
-        if (!templateId) {
-            alert('Não há um template carregado ainda');
-            return;
-        }
-        this.sdkInstance.openFromTemplate(templateId, this.setResponse.bind(this));
+        this.sdkInstance.openFromTemplate(this.templateId, this.setResponse.bind(this));
     }
 
     createUsingImage() {
@@ -52,19 +44,19 @@ class SDKActions {
     }
 
     createUsingDesign() {
-        if (!designId) {
+        if (!this.designId) {
             alert('Não há um design carregado ainda');
             return;
         }
-        this.sdkInstance.openDocument(designId, this.setResponse.bind(this));
+        this.sdkInstance.openDocument(this.designId, this.setResponse.bind(this));
     }
 
     createFromFormat() {
-        if (!formatId) {
+        if (!this.formatId) {
             alert('Não há um formato carregado ainda');
             return;
         }
-        this.sdkInstance.openFromFormat(formatId, this.setResponse.bind(this));
+        this.sdkInstance.openFromFormat(this.formatId, this.setResponse.bind(this));
     }
 
     setResponse(response) {

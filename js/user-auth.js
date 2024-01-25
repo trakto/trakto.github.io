@@ -72,7 +72,7 @@ class UserAuth {
             }),
         }).then(async (response) => {
             const { access_token } = await response.json();
-            if (!access_token) return;
+            if (!access_token) return alert('Erro ao autenticar');
             window.localStorage.setItem('access_token', access_token);
             this.userAccessToken = access_token;
             this.setAuthButtonStates();
