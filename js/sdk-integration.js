@@ -24,6 +24,7 @@ class SDKIntegration {
             fullScreen: false,
             customLoaderColor: '#9900f2',
             customLoaderBgColor: '#ff9999',
+            buttonClassName: 'trakto-button',
             allowNewPages: false,
             defaultCallback: this.editorResponseCallback.bind(this),
             onAuthenticated: this.authenticationCallback.bind(this),

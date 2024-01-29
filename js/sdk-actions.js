@@ -22,10 +22,21 @@ class SDKActions {
         document.getElementById('createUsingImage').addEventListener('click', this.createUsingImage.bind(this));
         document.getElementById('createUsingDesign').addEventListener('click', this.createUsingDesign.bind(this));
         document.getElementById('createFromFormat').addEventListener('click', this.createFromFormat.bind(this));
+
+        this.applyTraktoButtonConfig();
     }
 
+    applyTraktoButtonConfig() {
+        const openDesignButton = document.getElementById('openDesignButton');
+        openDesignButton.setAttribute('data-documentid', this.designId);
+
+        const templateButton = document.getElementById('openTemplateButton');
+        templateButton.setAttribute('data-templateid', this.templateId);
+
+        const formatButton = document.getElementById('openBlankButton');
+        formatButton.setAttribute('data-formatid', this.formatId);
+    }
     createWithBlankModel() {
-        console.log('TRAKTO SDK: Create with blank model');
         const payload = this.options;
         delete payload.backgroundImage;
         this.sdkInstance.openBlank(this.setResponse.bind(this), payload);

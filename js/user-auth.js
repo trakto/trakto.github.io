@@ -77,6 +77,9 @@ class UserAuth {
                 password,
             }),
         }).then(async (response) => {
+            if (!response.ok) {
+                this.logout();   
+            }
             const { access_token } = await response.json();
             if (!access_token) return alert('Erro ao autenticar');
             window.localStorage.setItem('access_token', access_token);
